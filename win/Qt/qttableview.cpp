@@ -1,5 +1,5 @@
 /**********************************************************************
-** $Id: qttableview.cpp,v 1.1 2002-04-06 12:11:20 j_ali Exp $
+** $Id: qttableview.cpp,v 1.1 2002/04/06 12:11:20 j_ali Exp $
 **
 ** Implementation of QtTableView class
 **

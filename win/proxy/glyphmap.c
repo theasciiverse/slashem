@@ -1,4 +1,4 @@
-/* $Id: glyphmap.c,v 1.6 2005-02-02 09:42:13 j_ali Exp $ */
+/* $Id: glyphmap.c,v 1.6 2005/02/02 09:42:13 j_ali Exp $ */
 /* Copyright (c) Slash'EM Development Team 2002-2004 */
 /* NetHack may be freely redistributed.  See license for details. */
 

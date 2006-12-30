@@ -1,4 +1,4 @@
-/* $Id: tile_t.h,v 1.3 2003-05-21 04:15:53 wacko Exp $ */
+/* $Id: tile_t.h,v 1.3 2003/05/21 04:15:53 wacko Exp $ */
 /* NetHack may be freely redistributed.  See license for details. */
 
 typedef unsigned char pixval;

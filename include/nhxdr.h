@@ -1,4 +1,4 @@
-/* $Id: nhxdr.h,v 1.7 2003-10-25 18:06:00 j_ali Exp $ */
+/* $Id: nhxdr.h,v 1.7 2003/10/25 18:06:00 j_ali Exp $ */
 /* Copyright (c) Slash'EM Development Team 2001-2003 */
 /* NetHack may be freely redistributed.  See license for details. */
 

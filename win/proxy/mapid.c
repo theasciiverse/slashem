@@ -1,4 +1,4 @@
-/* $Id: mapid.c,v 1.3 2004-12-31 19:22:48 j_ali Exp $ */
+/* $Id: mapid.c,v 1.3 2004/12/31 19:22:48 j_ali Exp $ */
 /* Copyright (c) Slash'EM Development Team 2001-2004 */
 /* NetHack may be freely redistributed.  See license for details. */
 

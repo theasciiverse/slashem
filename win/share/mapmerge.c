@@ -1,4 +1,4 @@
-/* $Id: mapmerge.c,v 1.1 2002-09-01 21:58:19 j_ali Exp $ */
+/* $Id: mapmerge.c,v 1.1 2002/09/01 21:58:19 j_ali Exp $ */
 /* Copyright (c) Slash'EM Development Team 2002 */
 /* NetHack may be freely redistributed.  See license for details. */
 

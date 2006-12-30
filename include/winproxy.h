@@ -1,4 +1,4 @@
-/* $Id: winproxy.h,v 1.17 2005-02-02 09:42:13 j_ali Exp $ */
+/* $Id: winproxy.h,v 1.17 2005/02/02 09:42:13 j_ali Exp $ */
 /* Copyright (c) Slash'EM Development Team 2001-2004 */
 /* NetHack may be freely redistributed.  See license for details. */
 

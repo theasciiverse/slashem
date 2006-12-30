@@ -1,4 +1,4 @@
-/* $Id: cc-pkg.c,v 1.1 2004-12-31 19:23:51 j_ali Exp $ */
+/* $Id: cc-pkg.c,v 1.1 2004/12/31 19:23:51 j_ali Exp $ */
 /* Copyright (C) 2002, 2004  Slash'EM Development Team */
 /* NetHack may be freely redistributed.  See license for details. */
 

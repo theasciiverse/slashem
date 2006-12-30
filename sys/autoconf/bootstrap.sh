@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id: bootstrap.sh,v 1.2 2005-09-17 14:58:33 j_ali Exp $
+# $Id: bootstrap.sh,v 1.2 2005/09/17 14:58:33 j_ali Exp $
 #
 case "$0" in
     */*)	confdir=`echo $0 | sed 's:/[^/]*$::'` ;;

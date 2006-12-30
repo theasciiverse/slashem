@@ -1,4 +1,4 @@
-/* $Id: eleash.h,v 1.1 2005-06-05 16:12:21 j_ali Exp $ */
+/* $Id: eleash.h,v 1.1 2005/06/05 16:12:21 j_ali Exp $ */
 /* Copyright (c) J. Ali Harlow, 2005.				  */
 /* NetHack may be freely redistributed.  See license for details. */
 

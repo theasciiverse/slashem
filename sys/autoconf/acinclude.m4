@@ -1,4 +1,4 @@
-# $Id: acinclude.m4,v 1.7 2006-12-30 12:48:19 j_ali Exp $
+# $Id: acinclude.m4,v 1.7 2006/12/30 12:48:19 j_ali Exp $
 
 # Front-end of AC_ARG_ENABLE
 # Usage:

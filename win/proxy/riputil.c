@@ -1,4 +1,4 @@
-/* $Id: riputil.c,v 1.1 2001-12-11 20:43:49 j_ali Exp $ */
+/* $Id: riputil.c,v 1.1 2001/12/11 20:43:49 j_ali Exp $ */
 /* Copyright (c) Slash'EM Development Team 2001-2002 */
 /* NetHack may be freely redistributed.  See license for details. */
 
