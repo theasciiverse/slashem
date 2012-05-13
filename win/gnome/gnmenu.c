@@ -312,7 +312,7 @@ ghack_menu_window_add_menu( GtkWidget *menuWin, gpointer menu_item,
 	    image = ghack_image_from_glyph( item->glyph, FALSE);
 	    if (image==NULL || image->pixmap==NULL) {
 		g_warning("Bummer -- having to force rendering for glyph %d!", item->glyph);
-		/* wierd -- pixmap is NULL so retry rendering it */
+		/* weird -- pixmap is NULL so retry rendering it */
 		image = ghack_image_from_glyph( item->glyph, TRUE);
 	    }
 	    if (image==NULL || image->pixmap==NULL) {

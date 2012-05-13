@@ -2966,7 +2966,7 @@ wiz_show_display()
     Sprintf(buf, "Trap: %s", lev->mem_trap ?
 	    defsyms[trap_to_defsym(lev->mem_trap)].explanation : "none");
     putstr(win, 0, buf);
-    Sprintf(buf, "Backgroud: %s", defsyms[lev->mem_bg].explanation);
+    Sprintf(buf, "Background: %s", defsyms[lev->mem_bg].explanation);
     putstr(win, 0, buf);
     putstr(win, 0, "");
     glyph = glyph_at(cc.x, cc.y);

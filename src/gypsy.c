@@ -431,7 +431,7 @@ fortune (mtmp)
 					pline_The("moon is waning tonight.");
 					break;
 				default:
-					impossible("wierd moonphase %d", flags.moonphase);
+					impossible("weird moonphase %d", flags.moonphase);
 					break;
 			}
 			break;

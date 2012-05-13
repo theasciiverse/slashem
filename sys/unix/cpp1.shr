@@ -1147,7 +1147,7 @@ X#define	BLK_NEST		32
 X
 X/*
 X * Some special constants.  These may need to be changed if cpp
-X * is ported to a wierd machine.
+X * is ported to a weird machine.
 X *
 X * NOTE: if cpp is run on a non-ascii machine, ALERT and VT may
 X * need to be changed.  They are used to implement the proposed
