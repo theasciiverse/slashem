@@ -495,7 +495,7 @@ unsigned char *sdlgl_load_png_file(const char *filename,
   /* set error handling since we are using the setjmp/longjmp method
    * (this is the normal method of doing things with libpng).
    */
-  if (setjmp(png_ptr->jmpbuf))
+  if (setjmp(png_jmpbuf(png_ptr)))
   {
     sdlgl_warning("Problem within LibPNG (unknown)\n");
     goto failed;

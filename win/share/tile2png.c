@@ -26,6 +26,7 @@
 #undef blue
 
 #include <png.h>
+#include <zlib.h>
 #include <assert.h>
 
 
@@ -104,7 +105,7 @@ void save_png(const char *filename, int width, int height)
   /* set error handling since we are using the setjmp/longjmp method
    * (this is the normal method of doing things with libpng).
    */
-  if (setjmp(png_ptr->jmpbuf))
+  if (setjmp(png_jmpbuf(png_ptr)))
   {
     fprintf(stderr, "tile2png: Unknown problem while writing PNG.\n");
     goto failed;
