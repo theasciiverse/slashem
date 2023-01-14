@@ -2274,6 +2274,8 @@ E FILE *FDECL(freopen_area, (const char *,const char *,const char *, FILE *));
 E int FDECL(chmod_area, (const char *, const char *, int));
 E int FDECL(open_area, (const char *, const char *, int, int));
 E int FDECL(creat_area, (const char *, const char *, int));
+E int FDECL(rename_area, (const char *,const char *,const char *));
+E int FDECL(remove_area, (const char *,const char *));
 E boolean FDECL(lock_file_area, (const char *, const char *,int));
 E void FDECL(unlock_file_area, (const char *, const char *));
 #endif

@@ -566,7 +566,7 @@ int lev;
 	if (lev == 0 || (level_info[lev].flags & LFILE_EXISTS)) {
 		set_levelfile_name(lock, lev);
 #ifdef FILE_AREAS
-		(void) remove_area(FILE_AREA_LEVL, lock, 0);
+		(void) remove_area(FILE_AREA_LEVL, lock);
 #else
 # ifdef HOLD_LOCKFILE_OPEN
 		if (lev == 0) really_close();
