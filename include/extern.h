@@ -681,9 +681,7 @@ E void NDECL(makerogueghost);
 E char *FDECL(fname_encode, (const char *, CHAR_P, char *, char *, int));
 E char *FDECL(fname_decode, (CHAR_P, char *, char *, int));
 E const char *FDECL(fqname, (const char *, int, int));
-#ifndef FILE_AREAS
 E FILE *FDECL(fopen_datafile, (const char *,const char *,int));
-#endif
 E boolean FDECL(uptodate, (int,const char *));
 E void FDECL(store_version, (int));
 #ifdef MFLOPPY

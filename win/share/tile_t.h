@@ -39,6 +39,7 @@ extern int tile_x, tile_y;
 
 #define pixel_equal(x,y) ((x.r == y.r) && (x.g == y.g) && (x.b == y.b))
 
+extern boolean FDECL(read_text_file_colormap, (const char *filename));
 extern boolean FDECL(fopen_text_file, (const char *, const char *));
 extern boolean FDECL(fopen_virtual_text_file, (const char *base_name,
 		const char *overlay_name, const char *type));
