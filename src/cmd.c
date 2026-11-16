@@ -2344,6 +2344,9 @@ int final;
 	}
 
 
+#ifdef SEDUCE
+	/* Changed for the Asciiverse, 2026-11-16: this conduct can only be
+	 * broken by the seduction scene, so it is listed only with SEDUCE. */
 	if (!u.uconduct.celibacy)
 	    you_have_X("remained celibate");
 #ifdef WIZARD
@@ -2353,6 +2356,7 @@ int final;
 	    enl_msg(You_, "have broken ", "broke ", buf);
 	}
 #endif
+#endif /* SEDUCE */
 
 	/* Pop up the window and wait for a key */
 	display_nhwindow(en_win, TRUE);

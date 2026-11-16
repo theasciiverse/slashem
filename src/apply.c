@@ -467,6 +467,9 @@ struct obj **optr;
 	       mtmp->mpeaceful = 1;
 	       set_malign(mtmp);
 	}*/
+#ifdef SEDUCE
+	/* Changed for the Asciiverse, 2026-11-16: this joke goes with the
+	 * seduction scene, so it is built only with SEDUCE. */
 	if ((mtmp->data->mlet == S_NYMPH || mtmp->data == &mons[PM_SUCCUBUS]
 		 || mtmp->data == &mons[PM_INCUBUS])
 	     && (spotmon) && (!mtmp->mleashed)) {
@@ -475,6 +478,7 @@ struct obj **optr;
 	       mtmp->mpeaceful = 0;
 	       mtmp->msleeping = 0;
 	}
+#endif
 	if(!mtmp->mtame) {
 	    if(!spotmon)
 		There("is no creature there.");
