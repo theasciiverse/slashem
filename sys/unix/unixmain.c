@@ -613,8 +613,8 @@ const char *folder;
 
 /* Reads the shipped data (nhshare, nhushare, license) from the folder
  * the binary is in, else from the folder the game was started in (av
- * starts a title in its install folder), else from the playground as
- * before. */
+ * starts a title in its install folder), else from /usr/share/slashem
+ * (the system packages), else from the playground as before. */
 static void
 av_dataprefix(argv0, startdir)
 const char *argv0, *startdir;
@@ -651,6 +651,8 @@ const char *argv0, *startdir;
 	}
 	if (!found && av_has_data(startdir))
 	    found = startdir;
+	if (!found && av_has_data("/usr/share/slashem"))
+	    found = "/usr/share/slashem";	/* the system packages */
 	if (found) {
 	    fqn_prefix[DATAPREFIX] = (char *) alloc(strlen(found) + 2);
 	    Sprintf(fqn_prefix[DATAPREFIX], "%s/", found);
