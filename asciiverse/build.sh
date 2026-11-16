@@ -37,6 +37,10 @@ case "$(uname -s)" in
 esac
 LDFLAGS="${LDFLAGS:-}"
 
+# POSIX regex for the menu colours, never GNU's: musl has GNU's
+# struct re_pattern_buffer, which configure takes for GNU regex, but not
+# its re_search()
+export ac_cv_type_struct_re_pattern_buffer=no
 ./configure --enable-tty-graphics --disable-x11-graphics \
   --disable-proxy-graphics --disable-sdl-graphics --disable-gl-graphics \
   --enable-data-librarian --disable-seduce \
@@ -48,7 +52,7 @@ grep -q '^#define SEDUCE' include/autoconf.h && { echo "SEDUCE still on" >&2; ex
 
 # the game JOBS at a time (default 2), then the level compilers and the
 # data libraries one at a time (their yacc steps may race under -j)
-make -j"${JOBS:-2}" -C src > make.log 2>&1 || { grep -n "error" make.log | head -20; tail -30 make.log; exit 1; }
+make -j"${JOBS:-2}" -C src > make.log 2>&1 || { grep -n -A3 "error:" make.log | head -40; tail -30 make.log; exit 1; }
 # (no Guidebook, which needs nroff, and no recover)
 make data rumors oracles options quest.dat dungeon spec_levs dlb >> make.log 2>&1 \
   || { tail -30 make.log; exit 1; }

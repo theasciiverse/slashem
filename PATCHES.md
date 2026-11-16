@@ -102,6 +102,13 @@ not have).
   compiles, and Apple clang's errors for old C habits (calls to
   undeclared functions, implicit int) are warnings again, as in GCC's
   C17. On a failed build the script prints the error lines.
+- Release fixes (v0.0.8E0F1-av.3): configure is made to use POSIX regex
+  (`ac_cv_type_struct_re_pattern_buffer=no`): musl has GNU's
+  `struct re_pattern_buffer`, which configure took for GNU regex, but
+  not `re_search()`. And upstream's own fix from CVS after the release,
+  "fix build error on OSX" (Paul Hurtley, 2007-01-28, `406f648`), is
+  cherry-picked: `win/tty/termcap.c` no longer declares `tparm()`
+  against macOS's curses header.
 - `asciiverse/stage.sh`: the program, both data libraries, `license`,
   `Guidebook.txt`, README.md and this file in `stage/`, the av
   archive's contents.
