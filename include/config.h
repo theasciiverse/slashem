@@ -218,7 +218,11 @@
  *	compression.
  */
 
-#ifdef UNIX
+/* Changed for the Asciiverse, 2026-11-16: the Asciiverse build uses the
+ * game's own compression (INTERNAL_COMP) instead of an external program;
+ * /usr/bin/compress is missing on most systems today, and saving then
+ * stopped at "Exec to compress save/... failed." */
+#if defined(UNIX) && !defined(ASCIIVERSE)
 /* path and file name extension for compression program */
 # define COMPRESS "/usr/bin/compress" /* Lempel-Ziv compression */
 # define COMPRESS_EXTENSION ".Z"	     /* compress's extension */
