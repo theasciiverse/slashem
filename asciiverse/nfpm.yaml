@@ -1,0 +1,46 @@
+# System packages (.deb, .rpm, .apk, Arch) for SLASH'EM, built by nfpm from
+# the same static Linux build as the av archive, after asciiverse/stage.sh.
+# The release workflow sets VERSION, RELEASE (our packaging release) and
+# ARCH (amd64 or arm64).
+#
+# No .desktop file on purpose: av is the one place titles are started from,
+# so Asciiverse packages never add menu entries.
+#
+# The game reads its data from /usr/share/slashem and keeps each player's
+# saves, scores and options in their own $XDG_STATE_HOME/slashem; nothing
+# is setgid and there is no shared score file.
+name: slashem
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: games
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/slashem
+license: NGPL
+description: |
+  SLASH'EM, Super Lotsa Added Stuff Hack - Extended Magic.
+  The NetHack variant with more of everything: new roles and races,
+  techniques, lightsabers and firearms, new monsters, shops, branches and
+  quests. Terminal (tty) build, packaged by Asciiverse.
+contents:
+  - src: stage/slashem
+    dst: /usr/bin/slashem
+    file_info: { mode: 0755 }
+  - src: stage/nhshare
+    dst: /usr/share/slashem/nhshare
+    file_info: { mode: 0644 }
+  - src: stage/nhushare
+    dst: /usr/share/slashem/nhushare
+    file_info: { mode: 0644 }
+  - src: stage/license
+    dst: /usr/share/slashem/license
+    file_info: { mode: 0644 }
+  - src: stage/Guidebook.txt
+    dst: /usr/share/slashem/Guidebook.txt
+    file_info: { mode: 0644 }
+  - src: stage/license
+    dst: /usr/share/doc/slashem/copyright
+    file_info: { mode: 0644 }
