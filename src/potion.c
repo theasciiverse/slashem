@@ -2177,7 +2177,11 @@ register struct obj *obj;
  * returns -1 if object exploded (potion should be used up) 
  */
 {
-	int chg, otyp = obj->otyp, otyp2;
+	/* Changed for the Asciiverse, 2026-11-16: otyp2 is a short, as
+	 * artifact_name() writes one through its pointer; as an int, its
+	 * upper bytes were left as they were and the test below failed. */
+	int chg, otyp = obj->otyp;
+	short otyp2;
 	xchar ox, oy;
 	long owornmask;
 	struct obj *otmp;
