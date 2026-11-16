@@ -37,10 +37,14 @@ utf8 = false
 color = "basic"
 mouse = false
 
-# 100x30, asciiverse/record-preview.py
+# 80x24, the tty interface's own size (narrower and shorter than 100x30,
+# shown centred), asciiverse/record-preview.py: Freya the Valkyrie and her
+# kitten explore the first level, go down the stairs and save on the
+# second (45 s); the still is the kitten, Freya and the down stairs in
+# the fourth room mapped
 [media]
 cast = "asciiverse/slashem.cast"
-thumbnail_at = 20.0
+thumbnail_at = 34.2
 
 [release]
 source = "github"
