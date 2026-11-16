@@ -52,6 +52,7 @@ jobs:
             LDFLAGS=-static asciiverse/build.sh'
           sudo chown -R "$(id -u):$(id -g)" .
           file out/slashem
+          file out/slashem | grep -q "statically linked"
           sh asciiverse/stage.sh
 
       - name: Smoke test

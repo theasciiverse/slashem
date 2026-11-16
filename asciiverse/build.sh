@@ -45,18 +45,29 @@ export ac_cv_type_struct_re_pattern_buffer=no
   --disable-proxy-graphics --disable-sdl-graphics --disable-gl-graphics \
   --enable-data-librarian --disable-seduce \
   --with-owner=no --with-group=no \
-  CC="${CC:-cc}" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" > configure.log 2>&1 \
+  CC="${CC:-cc}" CFLAGS="$CFLAGS" > configure.log 2>&1 \
   || { tail -20 configure.log; exit 1; }
 grep -q '^#define DLB' include/autoconf.h || { echo "no data librarian" >&2; exit 1; }
 grep -q '^#define SEDUCE' include/autoconf.h && { echo "SEDUCE still on" >&2; exit 1; }
 
 # the game JOBS at a time (default 2), then the level compilers and the
 # data libraries one at a time (their yacc steps may race under -j)
-make -j"${JOBS:-2}" -C src > make.log 2>&1 || { grep -n -A3 "error:" make.log | head -40; tail -30 make.log; exit 1; }
+# the game links with LFLAGS, not LDFLAGS, which configure does not see
+# (with -static its terminal library test fails and it falls back to
+# -ltermcap); for a static build TERMLIB names the libraries to link,
+# default -lncursesw, with -ltinfo where terminfo is a library of its own
+termlib=-lncursesw
+for d in /usr/lib /usr/lib64 /usr/lib/*-linux-*; do
+  [ -f "$d/libtinfo.a" ] && termlib="$termlib -ltinfo" && break
+done
+set -- LFLAGS="$LDFLAGS"
+case "$LDFLAGS" in *-static*) set -- "$@" WINTTYLIB="${TERMLIB:-$termlib}" ;; esac
+make -j"${JOBS:-2}" -C src "$@" > make.log 2>&1 || { grep -n -A3 "error:" make.log | head -40; tail -30 make.log; exit 1; }
 # (no Guidebook, which needs nroff, and no recover)
 make data rumors oracles options quest.dat dungeon spec_levs dlb >> make.log 2>&1 \
   || { tail -30 make.log; exit 1; }
 
 cp src/slashem dat/nhshare dat/nhushare "$OUT/"
+strip "$OUT/slashem"
 chmod 644 "$OUT/nhshare" "$OUT/nhushare"
 echo "built slashem"

@@ -109,6 +109,14 @@ not have).
   "fix build error on OSX" (Paul Hurtley, 2007-01-28, `406f648`), is
   cherry-picked: `win/tty/termcap.c` no longer declares `tparm()`
   against macOS's curses header.
+- Release fixes (v0.0.8E0F1-av.4): the game links with the Makefile's
+  `LFLAGS`, which never saw `LDFLAGS=-static`, so the Alpine build came
+  out linked against musl's loader; `build.sh` now passes `LDFLAGS` as
+  `LFLAGS`, and for a static build names the terminal library itself
+  (`-lncursesw`, with `-ltinfo` where that is separate), since
+  configure's own test cannot link statically and falls back to
+  `-ltermcap`. The binary is stripped, and the workflow checks that the
+  Linux one is static.
 - `asciiverse/stage.sh`: the program, both data libraries, `license`,
   `Guidebook.txt`, README.md and this file in `stage/`, the av
   archive's contents.
