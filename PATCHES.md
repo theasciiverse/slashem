@@ -93,6 +93,15 @@ not have).
   time, then the level compilers and data libraries serially. No
   Guidebook build (it needs nroff; the shipped `doc/Guidebook.txt` is
   used) and no `recover`.
+- Release fixes (v0.0.8E0F1-av.2): configure is told `--with-owner=no
+  --with-group=no` (its check for the owner ran `find . -user`, which
+  failed in the Alpine container); `sys/autoconf/config.guess` and
+  `config.sub` are GNU's 2024 versions (the 2005 ones did not know
+  aarch64 Linux); on macOS each architecture builds on its own runner
+  (macos-15-intel, macos-15), since the build runs the tools it
+  compiles, and Apple clang's errors for old C habits (calls to
+  undeclared functions, implicit int) are warnings again, as in GCC's
+  C17. On a failed build the script prints the error lines.
 - `asciiverse/stage.sh`: the program, both data libraries, `license`,
   `Guidebook.txt`, README.md and this file in `stage/`, the av
   archive's contents.

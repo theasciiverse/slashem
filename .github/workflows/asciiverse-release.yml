@@ -87,9 +87,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { target: x86_64-apple-darwin, arch: x86_64 }
-          - { target: aarch64-apple-darwin, arch: arm64 }
-    runs-on: macos-15
+          # each on its own architecture's runner: the build runs the
+          # tools it compiles (makedefs, the level compilers, dlb)
+          - { target: x86_64-apple-darwin, arch: x86_64, runner: macos-15-intel }
+          - { target: aarch64-apple-darwin, arch: arm64, runner: macos-15 }
+    runs-on: ${{ matrix.runner }}
     env:
       MACOSX_DEPLOYMENT_TARGET: "11.0"
     steps:
@@ -99,8 +101,7 @@ jobs:
 
       - name: Build
         run: |
-          CFLAGS="-O2 -arch ${{ matrix.arch }}" LDFLAGS="-arch ${{ matrix.arch }}" \
-            sh asciiverse/build.sh
+          CC="cc -arch ${{ matrix.arch }}" sh asciiverse/build.sh
           file out/slashem
           otool -L out/slashem
           sh asciiverse/stage.sh

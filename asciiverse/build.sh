@@ -30,12 +30,17 @@ cd "$B"
 # lists), which C23 no longer accepts: keep to C17 whatever the
 # compiler's default
 CFLAGS="${CFLAGS:--O2} -std=gnu17 -DASCIIVERSE"
+# Apple clang makes some of old C's habits errors (calls to undeclared
+# functions, implicit int); they stay warnings, as in GCC's C17
+case "$(uname -s)" in
+  Darwin) CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration -Wno-error=implicit-int -Wno-error=int-conversion -Wno-error=incompatible-function-pointer-types" ;;
+esac
 LDFLAGS="${LDFLAGS:-}"
 
 ./configure --enable-tty-graphics --disable-x11-graphics \
   --disable-proxy-graphics --disable-sdl-graphics --disable-gl-graphics \
   --enable-data-librarian --disable-seduce \
-  --with-owner="$(id -un)" --with-group="$(id -gn)" \
+  --with-owner=no --with-group=no \
   CC="${CC:-cc}" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" > configure.log 2>&1 \
   || { tail -20 configure.log; exit 1; }
 grep -q '^#define DLB' include/autoconf.h || { echo "no data librarian" >&2; exit 1; }
@@ -43,7 +48,7 @@ grep -q '^#define SEDUCE' include/autoconf.h && { echo "SEDUCE still on" >&2; ex
 
 # the game JOBS at a time (default 2), then the level compilers and the
 # data libraries one at a time (their yacc steps may race under -j)
-make -j"${JOBS:-2}" -C src > make.log 2>&1 || { tail -30 make.log; exit 1; }
+make -j"${JOBS:-2}" -C src > make.log 2>&1 || { grep -n "error" make.log | head -20; tail -30 make.log; exit 1; }
 # (no Guidebook, which needs nroff, and no recover)
 make data rumors oracles options quest.dat dungeon spec_levs dlb >> make.log 2>&1 \
   || { tail -30 make.log; exit 1; }
