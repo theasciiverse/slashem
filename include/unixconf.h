@@ -176,6 +176,15 @@
  */
 /* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
 
+/* Changed for the Asciiverse, 2026-11-16: the Asciiverse build keeps the
+ * playground in the player's state folder and reads the shipped data from
+ * the binary's folder, through the file prefixes (sys/unix/unixmain.c),
+ * which decl.h otherwise turns on only for NOCWD_ASSUMPTIONS, whose own
+ * code does not build on Unix, or VAR_PLAYGROUND. */
+#ifdef ASCIIVERSE
+# define PREFIXES_IN_USE
+#endif
+
 
 
 /*

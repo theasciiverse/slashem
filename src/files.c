@@ -1744,6 +1744,15 @@ const char *filename;
 		Sprintf(tmp_config, "%s/%s", envp, configfile);
 	if ((fp = fopenp(tmp_config, "r")) != (FILE *)0)
 		return(fp);
+#  ifdef ASCIIVERSE
+	/* Changed for the Asciiverse, 2026-11-16: without ~/.slashemrc,
+	 * the options file is slashemrc in the playground, the player's
+	 * state folder, which is the current folder by now. */
+	if ((fp = fopenp("slashemrc", "r")) != (FILE *)0) {
+		configfile = "slashemrc";
+		return(fp);
+	}
+#  endif
 # if defined(__APPLE__)
 	/* try an alternative */
 	if (envp) {
